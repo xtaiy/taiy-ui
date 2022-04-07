@@ -3,6 +3,7 @@ import App from './App.vue'
 import {createRouter,createWebHashHistory} from 'vue-router'
 import Home from './views/Home.vue'
 import Doc from './views/Doc.vue'
+import './index.scss'
 
 const routes=[{path:'/',component:Home},
 {path:'/doc',component:Doc}]
