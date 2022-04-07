@@ -12,7 +12,7 @@ import { provide } from "@vue/runtime-core"
 
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
   const menuVisible=ref(false)
-  provide('xxx',menuVisible)
+  provide('menuVisible',menuVisible)
  
 
 </script>

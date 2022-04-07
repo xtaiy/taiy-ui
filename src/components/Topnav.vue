@@ -1,17 +1,18 @@
 <template>
     <div class="topnav">
-            <div class="logo" @click="toggleMenu">LOGO</div>
-            <ul class="menu">
-                <li>菜单1</li>
-                <li>菜单2</li>
-            </ul>
-        </div>
+        <div class="logo" @click="toggleMenu">LOGO</div>
+        <ul class="menu">
+            <li>菜单1</li>
+            <li>菜单2</li>
+        </ul>
+        <span class="toggleAside"></span>
+    </div>
 </template>
 
 <script setup lang="ts">
 import { inject, Ref } from "@vue/runtime-core";
 
-const menuVisible = inject<Ref<boolean>>('xxx')
+const menuVisible = inject<Ref<boolean>>('menuVisible')
 const toggleMenu= () =>{
     if(menuVisible){
         menuVisible.value = !menuVisible.value
@@ -27,6 +28,8 @@ const toggleMenu= () =>{
     padding: 16px;
     position: relative;
     z-index: 10;
+    justify-content: center;
+    align-items: center;
     >.logo{
         max-width: 6em;
         margin-right: auto;
@@ -38,6 +41,10 @@ const toggleMenu= () =>{
         >li{
             margin: 0 1em;
         }
+    }
+    @media (max-width:700px) {
+        >.menu{display: none;}
+        >.logo{margin: 0 auto;}
     }
 }
 </style>

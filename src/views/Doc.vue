@@ -24,7 +24,7 @@ components:{
     Topnav
 }
 
-const menuVisible = inject<Ref<boolean>>('xxx')
+const menuVisible = inject<Ref<boolean>>('menuVisible')
 </script>
 
 <style lang="scss" scoped>
