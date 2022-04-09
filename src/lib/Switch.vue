@@ -27,26 +27,38 @@ const toggle=()=>{
         height: $h;
         width: $h * 2;
         border: none;
-        background: grey;
+        background: #bfbfbf;
         border-radius: $h / 2;
         position: relative;
-    }
-    span{
-        position: absolute;
-        background: white;
-        height: $h2;
-        width: $h2;
-        top: 2px;
-        left: 2px;
-        border-radius: $h2/2;
-        transition: left 250ms;
-    }
-    button.checked{
-        background: blue;
         >span{
-            left:24px;
+            position: absolute;
+            background: white;
+            height: $h2;
+            width: $h2;
+            top: 2px;
+            left: 2px;
+            border-radius: $h2/2;
+            transition: all 250ms;
+        }
+        
+        &.checked{
+            background: #1890ff;
+            >span{
+                left:24px;
+            }
+        }
+        &:active{
+            >span{width: $h2+4px;}
+        }
+        &.checked:active{
+            >span{
+                width: $h2 + 4px;
+                margin-left: -4px;
+            }
         }
     }
+    
+    
     
     
 
