@@ -1,27 +1,13 @@
 <template>
     <div>
-        <p>Switch 的文档</p>
-        <p>Switch 的文档</p>
-        <p>Switch 的文档</p>
-        <p>Switch 的文档</p>
-        <p>Switch 的文档</p>
-        <p>Switch 的文档</p>
-        <p>Switch 的文档</p>
-        <p>Switch 的文档</p>
-        <p>Switch 的文档</p>
-        <p>Switch 的文档</p>
-        <p>Switch 的文档</p>
-        <p>Switch 的文档</p>
-        <p>Switch 的文档</p>
-        <p>Switch 的文档</p>
-        <p>Switch 的文档</p>
-        <p>Switch 的文档</p>
-        <p>Switch 的文档</p>
-        <p>Switch 的文档</p>
-        <p>Switch 的文档</p>
-        <p>Switch 的文档</p>
-        <p>Switch 的文档</p>
-        <p>Switch 的文档</p>
-        <p>Switch 的文档</p>
+        <Switch />
     </div>
 </template>
+
+<script setup lang="ts">
+import Switch from '../lib/Switch.vue'
+components:{
+    Switch
+}
+
+</script>
