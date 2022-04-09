@@ -1,13 +1,21 @@
 <template >
-    <button :class="{checked: checked}" @click="toggle"><span></span></button>
+    <button @click="toggle"  :class="{checked:value}">
+        <span></span>
+    </button>
+    
 </template>
 
 <script setup lang="ts">
-import { ref } from "@vue/reactivity";
+import { ref, toRefs } from "@vue/reactivity";
 
-let checked = ref(false)
+
+const props = defineProps({
+    value: Boolean
+})
+const em=defineEmits(['input'])
+let {value}=toRefs(props)
 const toggle=()=>{
-    checked.value=!checked.value
+    em('input',!value.value)
 }
 
 </script>
@@ -31,6 +39,7 @@ const toggle=()=>{
         top: 2px;
         left: 2px;
         border-radius: $h2/2;
+        transition: left 250ms;
     }
     button.checked{
         background: blue;
