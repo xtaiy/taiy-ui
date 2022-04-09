@@ -1,6 +1,6 @@
 <template>
         <button class="taiy-button" 
-        :class="`theme-${theme}`" >
+        :class="`taiy-theme-${theme}`" >
         <!--$attrs有父组件传递来的属性，默认会继承到根节点上，使用v-bind改定到现在的节点上-->
             <slot />
         </button>
@@ -23,7 +23,7 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     $h:32px;
     $borfer-color:#d9d9d9;
     $color:#333;
