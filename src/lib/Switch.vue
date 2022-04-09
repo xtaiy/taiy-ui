@@ -12,10 +12,10 @@ import { ref, toRefs } from "@vue/reactivity";
 const props = defineProps({
     value: Boolean
 })
-const em=defineEmits(['input'])
+const em=defineEmits(['update:value'])
 let {value}=toRefs(props)
 const toggle=()=>{
-    em('input',!value.value)
+    em('update:value',!value.value)
 }
 
 </script>
