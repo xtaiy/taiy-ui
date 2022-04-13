@@ -1,12 +1,13 @@
 <template>
         <button class="taiy-button" 
-        :class="`taiy-theme-${theme}`" >
+        :class="classes" >
         <!--$attrs有父组件传递来的属性，默认会继承到根节点上，使用v-bind改定到现在的节点上-->
             <slot />
         </button>
 </template>
 
 <script lang="ts">
+import { computed } from '@vue/runtime-core'
     export default{
         //inheritAttrs:false,
         /*取消默认的继承属性，这样外面的属性不会
@@ -15,10 +16,21 @@
             theme:{
                 type:String,
                 default:'button'
+            },
+            size:{
+                type:String,
+                default:"normal"
             }
         },
-        setup(props,context){
-            
+        setup(props){
+            const {theme,size}=props
+            const classes= computed(()=>{
+                return {
+                    [`taiy-theme-${theme}`]:theme,
+                    [`taiy-size-${size}`]:size,
+                }
+            })
+            return {classes}
         }
     }
 </script>
@@ -71,6 +83,16 @@
             &:hover,&:focus{
                 background: darken(white,5%);
             }
+        }
+        &.taiy-size-big{
+            font-size: 24px;
+            height: 48px;
+            padding: 0 16px;
+        }
+        &.taiy-size-small{
+            font-size: 12px;
+            height: 20px;
+            padding: 0 4px;
         }
     }
 </style>

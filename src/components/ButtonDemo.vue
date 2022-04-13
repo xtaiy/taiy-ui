@@ -7,7 +7,23 @@
         <Button theme="link">链接</Button>
         <Button theme="text">文本</Button>
     </div>
-    
+    <h1>示例2</h1>
+    <div>
+        <Button size="big">大按钮</Button>
+        <Button >普通按钮</Button>
+        <Button size="small">小按钮</Button>
+    </div>
+    <div>
+        <Button theme="link" size="big">大link</Button>
+        <Button theme="link">普通link</Button>
+        <Button theme="link" size="small">小link</Button>
+    </div>
+    <div>
+        <Button theme="text" size="big">大text</Button>
+        <Button theme="text">普通text</Button>
+        <Button theme="text" size="small">小text</Button>
+    </div>
+
 </template>
 
 <script lang="ts">
