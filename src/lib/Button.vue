@@ -1,6 +1,7 @@
 <template>
         <button class="taiy-button" 
-        :class="classes" >
+        :class="classes" 
+        :disabled="disabled">
         <!--$attrs有父组件传递来的属性，默认会继承到根节点上，使用v-bind改定到现在的节点上-->
             <slot />
         </button>
@@ -24,6 +25,10 @@ import { computed } from '@vue/runtime-core'
             level:{
                 type:String,
                 default:"normal"
+            },
+            disabled:{
+                type:Boolean,
+                default:false
             }
         },
         setup(props: { theme: any; size: any ;level:any}){
@@ -47,6 +52,7 @@ import { computed } from '@vue/runtime-core'
     $blue:#40a9ff;
     $radius:4px;
     $red: red;
+    $grey: grey;
     .taiy-button{
         box-sizing: border-box;
         height: $h;
@@ -120,6 +126,13 @@ import { computed } from '@vue/runtime-core'
                     background: darken($red, 10%);
                     border-color: darken($red, 10%);
                 }
+            }
+            &[disabled] {
+                cursor: not-allowed;
+                color: $grey;
+                &:hover {
+                    border-color: $grey;
+                }
             }    
         }
         &.taiy-theme-link {
@@ -129,6 +142,10 @@ import { computed } from '@vue/runtime-core'
                 &:focus {
                     color: darken($red, 10%);
                 }
+            }
+            &[disabled] {
+                cursor: not-allowed;
+                color: $grey;
             }
         }
         &.taiy-theme-text {
@@ -145,6 +162,10 @@ import { computed } from '@vue/runtime-core'
                 &:focus {
                     color: darken($red, 10%);
                 }
+            }
+            &[disabled] {
+                cursor: not-allowed;
+                color: $grey;
             }
         }
     }
