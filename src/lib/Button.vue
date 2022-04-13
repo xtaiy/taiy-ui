@@ -2,6 +2,7 @@
         <button class="taiy-button" 
         :class="classes" 
         :disabled="disabled">
+        <span v-if="loading" class="taiy-loadingIndicator"></span>
         <!--$attrs有父组件传递来的属性，默认会继承到根节点上，使用v-bind改定到现在的节点上-->
             <slot />
         </button>
@@ -27,6 +28,10 @@ import { computed } from '@vue/runtime-core'
                 default:"normal"
             },
             disabled:{
+                type:Boolean,
+                default:false
+            },
+            loading:{
                 type:Boolean,
                 default:false
             }
@@ -168,5 +173,20 @@ import { computed } from '@vue/runtime-core'
                 color: $grey;
             }
         }
+        > .taiy-loadingIndicator{
+            width: 14px;
+            height: 14px;
+            display: inline-block;
+            margin-right: 4px;
+            border-radius: 8px; 
+            border-color: $blue $blue $blue transparent;
+            border-style: solid;
+            border-width: 2px;
+            animation: taiy-spin 1s infinite linear;
+        }
+    }
+    @keyframes taiy-spin {
+        0%{transform: rotate(0deg)} 
+        100%{transform: rotate(360deg)} 
     }
 </style>
