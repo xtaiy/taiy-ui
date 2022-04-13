@@ -7,6 +7,7 @@
         <Button theme="link">链接</Button>
         <Button theme="text">文本</Button>
     </div>
+    <hr>
     <h1>示例2</h1>
     <div>
         <Button size="big">大按钮</Button>
@@ -23,7 +24,24 @@
         <Button theme="text">普通text</Button>
         <Button theme="text" size="small">小text</Button>
     </div>
-
+    <hr>
+    <h1>示例3</h1>
+    <div>
+        <Button level="main" >main</Button>
+        <Button >normal</Button>
+        <Button level="danger">danger</Button>
+    </div>
+    <div>
+        <Button theme="link" level="main">大link</Button>
+        <Button theme="link">普通link</Button>
+        <Button theme="link" level="danger">小link</Button>
+    </div>
+    <div>
+        <Button theme="text" level="main">大text</Button>
+        <Button theme="text">普通text</Button>
+        <Button theme="text" level="danger">小text</Button>
+    </div>
+    <hr>
 </template>
 
 <script lang="ts">
