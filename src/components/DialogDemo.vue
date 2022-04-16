@@ -13,6 +13,8 @@
             </template>
         </Dialog>
         <Button @click="toggle">toggle</Button>
+        <h1>示例2</h1>
+         <Button @click="showDialog">show</Button>
     </div>
 </template>
 
@@ -20,6 +22,7 @@
 import Dialog from '../lib/Dialog.vue'
 import Button from '../lib/Button.vue'
 import { ref } from '@vue/reactivity'
+import {openDialog} from '../lib/openDialog'
 components:{
     Dialog,
     Button
@@ -33,6 +36,13 @@ const f1=()=>{
 }
 const f2=()=>{
     return 2
+}
+const showDialog=()=>{
+    openDialog({
+        title:'标题',
+        content:'你好',
+        f1,f2
+    })
 }
 
 </script>
