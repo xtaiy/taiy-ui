@@ -3,7 +3,15 @@
         <h1>示例1</h1>
         <Dialog v-model:visible="x" 
         :closeOnClickOverlay="false"
-        :ok="f1" :cancel="f2"></Dialog>
+        :ok="f1" :cancel="f2">
+            <template v-slot:title>
+                <h1>标题</h1>
+            </template>
+            <template v-slot:content>
+                <p>第一行字</p>
+                <p>第二行字</p>
+            </template>
+        </Dialog>
         <Button @click="toggle">toggle</Button>
     </div>
 </template>

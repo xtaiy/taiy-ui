@@ -1,23 +1,25 @@
 <template>
     <template v-if="visible">
-        <div class="taiy-dialog-overlay" 
-        @click="onClickOverlay"></div>
-        <div class="taiy-dialog-wrapper">
-        <div class="taiy-dialog">
-            <header>
-                标题
-                <span @click="close" class="taiy-dialog-close"></span>
-            </header>
-        <main>
-            <p>第一行字</p>
-            <p>第二行字</p>
-        </main>
-        <footer>
-            <Button @click="cancel">取消</Button>
-            <Button level="main" @click="ok"> 确定</Button>
-        </footer>
-        </div>
-    </div>
+        <teleport to='body' >
+            <div class="taiy-dialog-overlay" 
+                @click="onClickOverlay">
+            </div>
+            <div class="taiy-dialog-wrapper">
+                <div class="taiy-dialog">
+                    <header>
+                        <slot name="title"></slot>
+                        <span @click="close" class="taiy-dialog-close"></span>
+                    </header>
+                    <main>
+                        <slot name="content"></slot>
+                    </main>
+                    <footer>
+                        <Button @click="cancel">取消</Button>
+                        <Button level="main" @click="ok"> 确定</Button>
+                    </footer>
+                </div>
+            </div>
+        </teleport>>
     </template>
 </template>
 
