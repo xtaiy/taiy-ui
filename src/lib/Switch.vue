@@ -1,5 +1,5 @@
 <template >
-    <button class="taiy-switch" @click="toggle"  :class="{'taiy-checked':value}">
+    <button class="taiy-switch" @click="toggle"  :class="{'taiy-checked':visible}">
         <span></span>
     </button>
     
@@ -10,12 +10,12 @@ import { ref, toRefs } from "@vue/reactivity";
 
 
 const props = defineProps({
-    value: Boolean
+    visible: Boolean
 })
-const em=defineEmits(['update:value'])
-let {value}=toRefs(props)
+const em=defineEmits(['update:visible'])
+let {visible}=toRefs(props)
 const toggle=()=>{
-    em('update:value',!value.value)
+    em('update:visible',!visible.value)
 }
 
 </script>
