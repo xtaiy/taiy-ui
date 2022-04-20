@@ -15,11 +15,11 @@
                     </main>
                     <footer>
                         <Button @click="cancel">取消</Button>
-                        <Button level="main" @click="ok"> 确定</Button>
+                        <Button  @click="ok"> 确定</Button>
                     </footer>
                 </div>
             </div>
-        </teleport>>
+        </teleport>
     </template>
 </template>
 
