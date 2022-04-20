@@ -1,9 +1,11 @@
 <template>
     <div class="taiy-tabs">
-        <div class="taiy-tabs-nav">
+        <div class="taiy-tabs-nav" ref="container">
             <div class="taiy-tabs-nav-item" :class="{selected:t===selected}"
             v-for="(t,index) in titles" :key="index"
-            @click="select(t)">{{t}}</div>
+            @click="select(t)" :ref="el=>{if(el) navItems[index]=el}">{{t}}</div>
+
+            <div class="taiy-tabs-nav-indicator" ref="indicator"></div>
         </div>
         <div class="taiy-tabs-content">
             <component class="taiy-tabs-content-item"  :is="current" :key="selected"></component>
@@ -13,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import { computed } from '@vue/runtime-core'
+import { computed, onMounted, onUpdated, ref } from '@vue/runtime-core'
 import Tab from './Tab.vue'
     export default{
         props:{
@@ -22,27 +24,42 @@ import Tab from './Tab.vue'
             }
         },
         setup(props: any,context: { slots: { default: () => any }; emit: (arg0: string, arg1: string) => void } ){
+            const navItems=ref<HTMLDivElement[]>([])
+            const indicator=ref<HTMLDivElement>(null)
+            const container=ref<HTMLDivElement>(null)
+            const x=()=>{
+                const divs=navItems.value
+                const result=divs.filter(div=>div.classList.contains('selected'))[0]
+                const {width}= result.getBoundingClientRect()
+                indicator.value.style.width=width+'px'
+                const {left:left1}=container.value.getBoundingClientRect()
+                const {left:left2}=result.getBoundingClientRect()
+                const left =left2-left1
+                indicator.value.style.left=left+'px'
+            }
+            onMounted(x)
+            onUpdated(x)
             const defaults=context.slots.default()
             defaults.forEach((tag: { type: any })=>{
                 if(tag.type!==Tab){
                     throw new Error('Tabs 子标签必须是 Tab')
                 }
             })
+
             const titles=defaults.map((tag: { props: { title: any } })=>{
                 return tag.props.title
             })
+
             const current=computed(()=>{
                 return defaults.filter((tag: { props: { title: any } })=>{
                     return tag.props.title===props.selected
                 })[0]
             })
-                
-             
 
             const select=(title:string)=>{
                 context.emit('update:selected',title)
             }
-            return {defaults,titles,current,select}
+            return {navItems,indicator,container, defaults,titles,current,select}
         }
         
     }
@@ -57,6 +74,7 @@ import Tab from './Tab.vue'
             display: flex;
             color:$color;
             border-bottom: 1px solid $border-color;
+            position: relative;
 
             &-item{
                 padding: 8px 0;
@@ -71,6 +89,15 @@ import Tab from './Tab.vue'
                     color:$blue
                 }
             }
+            &-indicator{
+                    position: absolute;
+                    height: 3px;
+                    background: $blue;
+                    left: 0;
+                    bottom: -1px;
+                    width: 100px;
+                    transition:all 250ms;
+                }
         }
         &-content{
             padding: 8px 0;
